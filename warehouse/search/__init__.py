@@ -22,6 +22,8 @@ from elasticsearch_dsl import serializer
 from warehouse import db
 from warehouse.packaging.models import Project, Release
 from warehouse.search.utils import get_index
+from warehouse.search.interfaces import ISearchService
+from warehouse.search.services import ElasticSearchService, MeiliSearchService
 
 
 @db.listens_for(db.Session, "after_flush")
@@ -109,3 +111,14 @@ def includeme(config):
     from warehouse.search.tasks import reindex
 
     config.add_periodic_task(crontab(minute=0, hour=6), reindex)
+
+
+    # ISearchService registration 
+    
+    search_backend = config.registry.settings['search.backend']
+    print("*** SEARCH BACKEND REGISTRATION", search_backend)
+    if (search_backend == "warehouse.search.ElasticSearchService"):
+        config.register_service(ElasticSearchService, iface=ISearchService)
+    elif (search_backend == "warehouse.search.MeiliSearchService"):
+        config.register_service(MeiliSearchService, iface=ISearchService)
+    

@@ -11,7 +11,11 @@ BROKER_URL=sqs://localstack:4576/?region=us-east-1&queue_name_prefix=warehouse-d
 
 DATABASE_URL=postgresql://postgres@db/warehouse
 
+SEARCH_BACKEND=warehouse.search.ElasticSearchService
+
 ELASTICSEARCH_URL=http://elasticsearch:9200/development
+
+MEILISEARCH_URL=http://meilisearch:7700
 
 REDIS_URL=redis://redis:6379/0
 

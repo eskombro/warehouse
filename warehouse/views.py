@@ -50,6 +50,7 @@ from warehouse.forms import SetLocaleForm
 from warehouse.i18n import LOCALE_ATTR
 from warehouse.metrics import IMetricsService
 from warehouse.packaging.models import File, Project, Release, release_classifiers
+from warehouse.search.interfaces import ISearchService
 from warehouse.search.queries import SEARCH_FILTER_ORDER, get_es_query
 from warehouse.utils.http import is_safe_url
 from warehouse.utils.paginate import ElasticsearchPage, paginate_url_factory
@@ -278,12 +279,23 @@ def list_classifiers(request):
 )
 def search(request):
     metrics = request.find_service(IMetricsService, context=None)
+    search_backend = request.find_service(ISearchService, context=None)
+    print("*** SEARCH SERVICE", search)
+    
 
     querystring = request.params.get("q", "").replace("'", '"')
     order = request.params.get("o", "")
     classifiers = request.params.getall("c")
     query = get_es_query(request.es, querystring, order, classifiers)
 
+    # WIP
+    search_backend.search(querystring)
+    import meilisearch
+
+    ms_client = meilisearch.Client('http://meilisearch:7700')
+    index = ms_client.get_or_create_index('packages')
+    # WIP
+ 
     try:
         page_num = int(request.params.get("page", 1))
     except ValueError:

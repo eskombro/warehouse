@@ -31,6 +31,11 @@ services:
       nofile:
         soft: 65536
         hard: 65536
+  
+  meilisearch:
+    image: getmeili/meilisearch:v0.13.0
+    ports:
+      - "7700:7700"
 
   camo:
     image: pypa/warehouse-camo:latest

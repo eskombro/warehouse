@@ -427,6 +427,10 @@ markupsafe==1.1.1 \
     --hash=sha256:e249096428b3ae81b08327a63a485ad0878de3fb939049038579ac0ef61e17e7 \
     --hash=sha256:e8313f01ba26fbbe36c7be1966a7b7424942f670f38e666995b88d012765b9be \
     # via jinja2, mako, pyramid-jinja2, wtforms
+meilisearch==0.12.0 \
+    --hash=sha256:1be21ab08d494a908be99f587550392e4124c72077d3d9f854dbbaa907c286f9 \
+    --hash=sha256:d21fc86d595289706f5e7da194e27f150d1f5a7efeb60e40562e1bac11fc46a5 \
+    # via -r requirements/main.in
 mistune==0.8.4 \
     --hash=sha256:59a3429db53c50b5c6bcc8a07f8848cb00d7dc8bdb431a4ab41920d201d4756e \
     --hash=sha256:88a1051873018da288eee8538d476dffe1262495144b33ecb586c4ab266bb8d4 \
@@ -676,7 +680,7 @@ requests-aws4auth==1.0 \
 requests==2.24.0 \
     --hash=sha256:b3559a131db72c33ee969480840fff4bb6dd111de7dd27c8ee1f820f4f00231b \
     --hash=sha256:fe75cc94a9443b9246fc7049224f75604b113c36acb93f87b80ed42c44cbb898 \
-    # via -r requirements/main.in, datadog, google-api-core, premailer, requests-aws4auth
+    # via -r requirements/main.in, datadog, google-api-core, meilisearch, premailer, requests-aws4auth
 rfc3986==1.4.0 \
     --hash=sha256:112398da31a3344dc25dbf477d8df6cb34f9278a94fee2625d89e4514be8bb9d \
     --hash=sha256:af9147e9aceda37c91a05f4deb128d4b4b49d6b199775fd2d2927768abdc8f50 \
