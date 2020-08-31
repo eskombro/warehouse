@@ -118,7 +118,7 @@ def includeme(config):
     search_backend = config.registry.settings['search.backend']
     print("*** SEARCH BACKEND REGISTRATION", search_backend)
     if (search_backend == "warehouse.search.ElasticSearchService"):
-        config.register_service(ElasticSearchService, iface=ISearchService)
+        config.register_service(ElasticSearchService, iface=ISearchService, name="search")
     elif (search_backend == "warehouse.search.MeiliSearchService"):
-        config.register_service(MeiliSearchService, iface=ISearchService)
+        config.register_service(MeiliSearchService, iface=ISearchService, name="search")
     

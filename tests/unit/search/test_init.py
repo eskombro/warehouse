@@ -126,6 +126,7 @@ def test_includeme(monkeypatch):
         add_request_method=pretend.call_recorder(lambda *a, **kw: None),
         add_periodic_task=pretend.call_recorder(lambda *a, **kw: None),
     )
+    config.registry.settings['search.backend'] = "ElasticSearchService"
 
     search.includeme(config)
 

@@ -279,8 +279,8 @@ def list_classifiers(request):
 )
 def search(request):
     metrics = request.find_service(IMetricsService, context=None)
-    search_backend = request.find_service(ISearchService, context=None)
-    print("*** SEARCH SERVICE", search)
+    # search_backend = request.find_service(ISearchService, context=None)
+    # print("*** SEARCH SERVICE", search_backend)
     
 
     querystring = request.params.get("q", "").replace("'", '"')
@@ -289,11 +289,11 @@ def search(request):
     query = get_es_query(request.es, querystring, order, classifiers)
 
     # WIP
-    search_backend.search(querystring)
-    import meilisearch
+    # search_backend.search(querystring)
+    # import meilisearch
 
-    ms_client = meilisearch.Client('http://meilisearch:7700')
-    index = ms_client.get_or_create_index('packages')
+    # ms_client = meilisearch.Client('http://meilisearch:7700')
+    # index = ms_client.get_or_create_index('packages')
     # WIP
  
     try:

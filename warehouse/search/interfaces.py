@@ -17,3 +17,13 @@ class ISearchService(Interface):
         """
         This method runs a search for the specified query
         """
+    
+    def reindex(projects):
+        """
+        Index a list of projects
+        """
+    
+    def reindex_project(project):
+        """
+        Index a single projects
+        """
